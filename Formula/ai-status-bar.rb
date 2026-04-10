@@ -11,10 +11,7 @@ class AiStatusBar < Formula
   def install
     libexec.install "bin", "providers", "utils", "config.json"
     (bin/"ai-status-bar").write_env_script libexec/"bin/ai-status-bar", PATH: "#{Formula["python@3"].opt_bin}:${PATH}"
-  end
-
-  def post_install
-    system libexec/"utils/setup.sh"
+    system bin/"ai-status-bar", "setup"
   end
 
   test do
