@@ -8,11 +8,7 @@ Homebrew formulae for [AI Status Bar](https://github.com/longbui99/AIStatusBar) 
 brew install longbui99/AIStatusBar/ai-status-bar
 ```
 
-Then run the setup wizard:
-
-```bash
-ai-status-bar setup
-```
+The setup wizard runs automatically after install.
 
 ## Update
 

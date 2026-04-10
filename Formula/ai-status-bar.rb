@@ -9,17 +9,12 @@ class AiStatusBar < Formula
   depends_on "python@3"
 
   def install
-    prefix.install Dir["*"]
-    bin.install_symlink prefix/"bin/ai-status-bar"
+    libexec.install "bin", "providers", "utils", "config.json"
+    (bin/"ai-status-bar").write_env_script libexec/"bin/ai-status-bar", PATH: "#{Formula["python@3"].opt_bin}:${PATH}"
   end
 
-  def caveats
-    <<~EOS
-      Run the setup wizard to get started:
-        ai-status-bar setup
-
-      This will install SwiftBar (if needed) and let you choose providers.
-    EOS
+  def post_install
+    system libexec/"utils/setup.sh"
   end
 
   test do
